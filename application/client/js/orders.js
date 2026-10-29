@@ -42,7 +42,13 @@ if (orderForm) {
             message.textContent = "Select at least one product.";
             return;
         }
-        message.style.color = "green";
-        message.textContent = "Client validation completed successfully.";
+        fetch("../../server/orders/createOrder.php", {
+            method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+            message.style.color = "green";
+            message.textContent = data.message;
+        });
     });
 }
