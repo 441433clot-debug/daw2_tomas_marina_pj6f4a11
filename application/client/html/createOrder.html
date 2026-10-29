@@ -25,19 +25,50 @@
             <input type="email" id="customerEmail" name="customerEmail">
             <label for="customerPhone">Customer Phone</label>
             <input type="tel" id="customerPhone" name="customerPhone">
-        </form>
-        <div class="buttons">
-            <button
-                type="button"
+            <br>
+            
+            <h2>Products</h2>
+            <div class="product">
+            <!--Primer producte-->
+            <input type="checkbox" id="nike" name="products[]" value="Nike Air Max 270">
+            <label for="nike"> Nike Air Max 270 (€120)</label>
+            <input type="number" id="nikeQuantity" name="nikeQuantity" min="1" value="1">
+            </div>
+            <br>
+
+            <!--Segon Producte-->
+            <div class="product">
+            <input type="checkbox" id="adidas" name="products[]" value="Adidas Samba">
+            <label for="adidas">Adidas Samba (€95)</label>
+            <input type="number" id="adidasQuantity" name="adidasQuantity" min="1" value="1">
+            </div>
+            <br>
+
+            <!--Tercer Producte-->
+            <div class="product">
+            <input type="checkbox" id="converse" name="products[]" value="Converse Chuck Taylor">
+            <label for="converse">Converse Chuck Taylor (€70)</label>
+            <input type="number" id="converseQuantity" name="converseQuantity" min="1" value="1">
+            </div>
+            <br>
+
+            <!--Quart Producte-->
+            <div class="product">
+            <input type="checkbox" id="newbalance" name="products[]" value="New Balance 530">
+            <label for="newbalance">New Balance 530 (€110)</label>
+            <input type="number" id="newBalanceQuantity" name="newBalanceQuantity" min="1"value="1">
+            </div>
+            <br><br>
+
+            <button type="submit">Create Order</button>
+            </form>
+        
+            <div class="buttons">
+            <button type="button"
                 id="menuButton">
                 Operation Menu
             </button>
-
-            <button
-                type="button"
-                id="homeButton">
-                Home
-            </button>
+            <button type="button" id="homeButton">Home</button>
         </div>
     </main>
     <script src="../js/main.js"></script>
