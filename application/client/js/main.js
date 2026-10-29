@@ -36,9 +36,16 @@ if (loginForm) {
             return;
         }
 
-        window.location.href = "menu.html";
-    });
-}
+        //window.location.href = "menu.html";
+        fetch("../../server/authentication/login.php", {
+            method: "POST"
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+            });
+        }
 
 const continueButton = document.getElementById("continueButton");
 
