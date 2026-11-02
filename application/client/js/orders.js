@@ -42,8 +42,62 @@ if (orderForm) {
             message.textContent = "Select at least one product.";
             return;
         }
+
+        const selectedProducts = [];
+
+        if (document.getElementById("nike").checked) {
+            selectedProducts.push({
+                product: "Nike Air Max 270",
+                price: 120,
+                quantity: Number(document.getElementById("nikeQuantity").value)
+            });
+        }
+
+        if (document.getElementById("adidas").checked) {
+            selectedProducts.push({
+                product: "Adidas Samba",
+                price: 95,
+                quantity: Number(document.getElementById("adidasQuantity").value)
+            });
+        }
+
+        if (document.getElementById("converse").checked) {
+            selectedProducts.push({
+                product: "Converse Chuck Taylor",
+                price: 70,
+                quantity: Number(document.getElementById("converseQuantity").value)
+            });
+        }
+
+        if (document.getElementById("newbalance").checked) {
+            selectedProducts.push({
+                product: "New Balance 530",
+                price: 110,
+                quantity: Number(document.getElementById("newBalanceQuantity").value)
+            });
+        }
+
         fetch("../../server/orders/createOrder.php", {
-            method: "POST"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                orderId: orderId,
+                customerName: customerName,
+                customerAddress: customerAddress,
+                customerEmail: customerEmail,
+                customerPhone: customerPhone,
+                products: selectedProducts
+            })
+
+        })
+        .then(response => response.json())
+        .then(data => {
+            message.style.color = data.success ? "green" : "red";
+            message.textContent = data.message;
+
         })
         .then(response => response.json())
         .then(data => {
