@@ -78,31 +78,31 @@ if (orderForm) {
         }
 
         fetch("../../server/orders/createOrder.php", {
+
             method: "POST",
+
             headers: {
                 "Content-Type": "application/json"
             },
 
             body: JSON.stringify({
+
                 orderId: orderId,
                 customerName: customerName,
                 customerAddress: customerAddress,
                 customerEmail: customerEmail,
                 customerPhone: customerPhone,
                 products: selectedProducts
+
             })
 
         })
         .then(response => response.json())
         .then(data => {
+
             message.style.color = data.success ? "green" : "red";
             message.textContent = data.message;
 
-        })
-        .then(response => response.json())
-        .then(data => {
-            message.style.color = "green";
-            message.textContent = data.message;
         });
     });
 }

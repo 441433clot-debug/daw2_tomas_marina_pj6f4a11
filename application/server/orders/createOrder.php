@@ -39,8 +39,21 @@ if (count($products) === 0) {
     sendJsonResponse(false, "Select at least one product.");
 }
 
+$subtotal = 0;
+
+foreach ($products as $product) {
+    $subtotal += $product["price"] * $product["quantity"];
+}
+
+$vat = round($subtotal * 0.21, 2);
+$total = round($subtotal + $vat, 2);
+
 sendJsonResponse(
     true,
-    "Order received successfully.",
-    $input
+    "Order calculated successfully.",
+    [
+        "subtotal" => $subtotal,
+        "vat" => $vat,
+        "total" => $total
+    ]
 );
