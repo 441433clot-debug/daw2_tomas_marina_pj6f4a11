@@ -1,28 +1,42 @@
-// Load all orders when the page is opened
-fetch("../../server/orders/viewOrders.php")
+// Get the form elements
+const viewOrdersForm = document.getElementById("viewOrdersForm");
+const viewOption = document.getElementById("viewOption");
+const orderIdContainer = document.getElementById("orderIdContainer");
+const orderIdInput = document.getElementById("orderId");
+const ordersContainer = document.getElementById("ordersContainer");
 
-    .then(response => response.json())
-    .then(data => {
-        const ordersContainer = document.getElementById("ordersContainer");
+// Show or hide the order ID input
+viewOption.addEventListener("change", () => {
+    const isSingleOrder = viewOption.value === "single";
 
-        // Remove previous content
-        ordersContainer.innerHTML = "";
+    orderIdContainer.style.display = isSingleOrder ? "block" : "none";
+    orderIdInput.required = isSingleOrder;
+});
 
-        if (!data.success) {
-            ordersContainer.innerHTML = "<p>No orders found.</p>";
-            return;
-        }
-        // Show every stored order
-        data.data.forEach(order => {
-            ordersContainer.innerHTML += `
-                <div class="orderCard">
-                    <h3>Order ${order.orderId}</h3>
-                    <p><strong>Customer:</strong> ${order.customerName}</p>
-                    <p><strong>Email:</strong> ${order.customerEmail}</p>
-                    <p><strong>Phone:</strong> ${order.customerPhone}</p>
-                    <p><strong>Total:</strong> €${order.total}</p>
-                    <hr>
-                </div>
-            `;
+// Send the selected query to PHP
+viewOrdersForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Check that an ID was entered for a single order
+    if (viewOption.value === "single" && orderIdInput.value.trim() === "") {
+        ordersContainer.innerHTML = "<p>Please enter an order ID.</p>";
+        return;
+    }
+
+    // Build the URL depending on the selected option
+    let url = "../../server/orders/viewOrders.php";
+
+    if (viewOption.value === "single") {
+        url += "?orderId=" + encodeURIComponent(orderIdInput.value.trim());
+    }
+
+    // Request the orders from PHP
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            ordersContainer.innerHTML = html;
+        })
+        .catch(() => {
+            ordersContainer.innerHTML = "<p>An error occurred while loading orders.</p>";
         });
-    });
+});

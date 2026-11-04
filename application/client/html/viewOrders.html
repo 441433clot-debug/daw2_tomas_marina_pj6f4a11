@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,20 +8,33 @@
     <title>View Orders</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
     <main class="container">
-        <h1>Stored Orders</h1>
+        <h1>View Orders</h1>
+        <form id="viewOrdersForm">
+            <label for="viewOption">Select an option:</label>
+            <select id="viewOption" name="viewOption">
+                <option value="all">View all orders</option>
+                <option value="single">View one order</option>
+            </select>
+            <div id="orderIdContainer" style="display: none;">
+                <label for="orderId">Order ID:</label>
+                <input
+                    type="text"
+                    id="orderId"
+                    name="orderId"
+                    placeholder="Enter the order ID">
+            </div>
+            <button type="submit">View Orders</button>
+        </form>
         <div id="ordersContainer"></div>
 
         <br>
 
         <div class="buttons">
-
-            <button
-                type="button"
-                id="menuButton">
-                Menu
-            </button>
+            <button type="button" id="menuButton">Menu</button>
+            <button type="button" id="homeButton">Home</button>
         </div>
     </main>
     <script src="../js/navigation.js"></script>

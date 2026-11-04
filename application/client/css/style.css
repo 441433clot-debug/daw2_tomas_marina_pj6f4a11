@@ -1,68 +1,125 @@
-body{
-    margin:0;
-    padding:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4f4f4;
+/* General page style */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
 }
 
-.container{
-    width:80%;
-    margin:auto;
-    margin-top:60px;
-    text-align:center;
+.container {
+    width: 80%;
+    margin: auto;
+    margin-top: 60px;
+    text-align: center;
 }
 
-.logo{
-    width:180px;
+.logo {
+    width: 180px;
 }
 
-h1{
-    color:#222;
+h1 {
+    color: #222;
 }
 
-.buttons{
-    margin-top:30px;
+h2 {
+    color: #333;
 }
 
-button{
-    padding:12px 25px;
-    margin:10px;
-    cursor:pointer;
-    font-size:16px;
+/* Buttons */
+.buttons {
+    margin-top: 30px;
 }
 
-form{
-    width:450px;
-    margin:auto;
-    text-align:left;
+button {
+    padding: 12px 25px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-input{
-    width:100%;
-    padding:10px;
-    margin-top:5px;
-    box-sizing:border-box;
+/* Forms */
+form {
+    width: 450px;
+    max-width: 100%;
+    margin: auto;
+    text-align: left;
 }
 
-.product{
-    display:flex;
-    align-items:center;
-    gap:15px;
-    margin-bottom:10px;
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
 }
 
-.product label{
-    width:220px;
+/* Products */
+.product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
 }
 
-.product input[type="number"]{
-    width:70px;
+.product label {
+    width: 220px;
 }
 
-/* Card used to display stored orders */
+.product input[type="number"] {
+    width: 70px;
+}
+
+/* Orders table */
+table {
+    width: 100%;
+    max-width: 700px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background: #e8e8e8;
+}
+
+/* Order cards */
 .orderCard {
     border: 1px solid #cccccc;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 8px;
+}
+
+/* Error and information messages */
+#orderMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        margin-top: 30px;
+    }
+    form {
+        width: 100%;
+    }
+    .product {
+        flex-wrap: wrap;
+    }
+    .product label {
+        width: auto;
+    }
+    table {
+        font-size: 13px;
+    }
 }

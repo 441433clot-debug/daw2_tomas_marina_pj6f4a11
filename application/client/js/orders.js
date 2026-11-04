@@ -1,18 +1,25 @@
+// Get the order form
 const orderForm = document.getElementById("orderForm");
 
 if (orderForm) {
+
     orderForm.addEventListener("submit", function (event) {
         event.preventDefault();
+
+        // Get customer information
         const orderId = document.getElementById("orderId").value.trim();
         const customerName = document.getElementById("customerName").value.trim();
         const customerAddress = document.getElementById("customerAddress").value.trim();
         const customerEmail = document.getElementById("customerEmail").value.trim();
         const customerPhone = document.getElementById("customerPhone").value.trim();
+
         const products = document.querySelectorAll('input[name="products[]"]:checked');
         const message = document.getElementById("orderMessage");
+
         message.textContent = "";
         message.style.color = "red";
 
+        // Check required fields
         if (
             orderId === "" ||
             customerName === "" ||
@@ -24,6 +31,7 @@ if (orderForm) {
             return;
         }
 
+        // Validate email and phone
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!emailPattern.test(customerEmail)) {
@@ -38,11 +46,13 @@ if (orderForm) {
             return;
         }
 
+        // Check that at least one product is selected
         if (products.length === 0) {
             message.textContent = "Select at least one product.";
             return;
         }
 
+        // Get selected products
         const selectedProducts = [];
 
         if (document.getElementById("nike").checked) {
@@ -77,25 +87,20 @@ if (orderForm) {
             });
         }
 
+        // Send the order to PHP
         fetch("../../server/orders/createOrder.php", {
-
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json"
             },
-
             body: JSON.stringify({
-
                 orderId: orderId,
                 customerName: customerName,
                 customerAddress: customerAddress,
                 customerEmail: customerEmail,
                 customerPhone: customerPhone,
                 products: selectedProducts
-
             })
-
         })
         .then(response => response.json())
         .then(data => {
@@ -103,6 +108,17 @@ if (orderForm) {
             message.style.color = data.success ? "green" : "red";
             message.textContent = data.message;
 
+            // Show the final price after saving
+            if (data.success) {
+                fetch("../../server/orders/viewOrders.php?orderId=" + encodeURIComponent(orderId))
+                    .then(response => response.text())
+                    .then(html => {
+                        message.innerHTML = data.message + html;
+                    });
+            }
+        })
+        .catch(() => {
+            message.textContent = "An error occurred while creating the order.";
         });
     });
 }

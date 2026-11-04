@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +8,55 @@
 </head>
 
 <body>
-
     <main class="container">
         <h1>Application Documentation</h1>
         <h2>Description</h2>
-
         <p>
-            This application allows employees of the shoe store to create
-            customer orders and consult saved orders.
+            This application is designed for employees of a shoe store.
+            It allows them to create customer orders and consult previously
+            stored orders.
         </p>
-
+        <h2>Authentication</h2>
+        <p>
+            Employees must log in using their username and password
+            before accessing the application operations.
+        </p>
         <h2>Available Operations</h2>
-        
         <ul>
             <li>Create a new customer order.</li>
-            <li>Display all stored orders.</li>
-            <li>Search for an order by its identifier.</li>
+            <li>View all stored orders.</li>
+            <li>Search for a specific order using its ID.</li>
         </ul>
-        
+        <h2>Creating Orders</h2>
+        <p>
+            To create an order, employees must enter the order ID
+            and the customer's personal information. They can select
+            products and their quantities.
+        </p>
+        <p>
+            The application calculates the subtotal, adds 21% VAT
+            and calculates the final price.
+        </p>
+        <h2>Order Storage</h2>
+        <p>
+            Orders are stored permanently in a JSON file called
+            orders.json. The information can be consulted later
+            using the order viewing options.
+        </p>
+        <h2>Technologies Used</h2>
+        <ul>
+            <li>HTML and CSS for the user interface.</li>
+            <li>JavaScript for form validation and communication.</li>
+            <li>PHP for server-side operations.</li>
+            <li>JSON for permanent data storage.</li>
+            <li>Apache with HTTPS support.</li>
+        </ul>
+
         <div class="buttons">
-            <button id="homeButton">
-                Home
-            </button>
-            <button id="loginButton">
-                Login
-            </button>
+            <button id="homeButton">Home</button>
+            <button id="loginButton">Login</button>
         </div>
+
     </main>
     <script src="../js/navigation.js"></script>
 </body>

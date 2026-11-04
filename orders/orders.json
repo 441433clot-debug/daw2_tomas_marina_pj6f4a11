@@ -20,5 +20,49 @@
         "subtotal": 215,
         "vat": 45.15,
         "total": 260.15
+    },
+    {
+        "orderId": "2",
+        "customerName": "Paula Gonzalez Jimenez",
+        "customerAddress": "Carrer de la Concordia 26",
+        "customerEmail": "paula26@gmail.com",
+        "customerPhone": "623988071",
+        "products": [
+            {
+                "product": "Nike Air Max 270",
+                "price": 120,
+                "quantity": 1
+            },
+            {
+                "product": "Converse Chuck Taylor",
+                "price": 70,
+                "quantity": 2
+            }
+        ],
+        "subtotal": 260,
+        "vat": 54.6,
+        "total": 314.6
+    },
+    {
+        "orderId": "3",
+        "customerName": "Hug Lopez Moya",
+        "customerAddress": "Carrer Valencia 46",
+        "customerEmail": "Hug@gmail.com",
+        "customerPhone": "745869231",
+        "products": [
+            {
+                "product": "Nike Air Max 270",
+                "price": 120,
+                "quantity": 1
+            },
+            {
+                "product": "New Balance 530",
+                "price": 110,
+                "quantity": 2
+            }
+        ],
+        "subtotal": 340,
+        "vat": 71.4,
+        "total": 411.4
     }
 ]
