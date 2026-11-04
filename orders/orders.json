@@ -1,0 +1,24 @@
+[
+    {
+        "orderId": "1",
+        "customerName": "Marina Tom\u00e1s Cuenca",
+        "customerAddress": "Avd\/ Lloreda 42",
+        "customerEmail": "441433.clot@fje.edu",
+        "customerPhone": "617090424",
+        "products": [
+            {
+                "product": "Nike Air Max 270",
+                "price": 120,
+                "quantity": 1
+            },
+            {
+                "product": "Adidas Samba",
+                "price": 95,
+                "quantity": 1
+            }
+        ],
+        "subtotal": 215,
+        "vat": 45.15,
+        "total": 260.15
+    }
+]
