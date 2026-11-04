@@ -58,3 +58,11 @@ input{
 .product input[type="number"]{
     width:70px;
 }
+
+/* Card used to display stored orders */
+.orderCard {
+    border: 1px solid #cccccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
