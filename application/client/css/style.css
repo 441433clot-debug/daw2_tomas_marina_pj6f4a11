@@ -123,3 +123,22 @@ th {
         font-size: 13px;
     }
 }
+
+/* Table used to display orders */
+.ordersTable{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+.ordersTable th,
+.ordersTable td{
+    border:1px solid #cccccc;
+    padding:10px;
+    text-align:left;
+}
+
+.ordersTable th{
+    background:#eeeeee;
+}

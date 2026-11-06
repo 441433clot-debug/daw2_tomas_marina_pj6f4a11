@@ -106,19 +106,29 @@ if (orderForm) {
         .then(data => {
 
             message.style.color = data.success ? "green" : "red";
-            message.textContent = data.message;
 
-            // Show the final price after saving
             if (data.success) {
-                fetch("../../server/orders/viewOrders.php?orderId=" + encodeURIComponent(orderId))
-                    .then(response => response.text())
-                    .then(html => {
-                        message.innerHTML = data.message + html;
-                    });
+
+                // Show the order information returned by PHP
+                message.innerHTML =
+                    "<strong>" + data.message + "</strong><br><br>" +
+                    "Subtotal: €" + data.data.subtotal.toFixed(2) + "<br>" +
+                    "VAT (21%): €" + data.data.vat.toFixed(2) + "<br>" +
+                    "<strong>Total: €" + data.data.total.toFixed(2) + "</strong>";
+
+            } else {
+
+                // Show the error message
+                message.textContent = data.message;
+
             }
+
         })
         .catch(() => {
+
+            message.style.color = "red";
             message.textContent = "An error occurred while creating the order.";
+
         });
-    });
+        });
 }

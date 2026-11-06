@@ -64,5 +64,27 @@
         "subtotal": 340,
         "vat": 71.4,
         "total": 411.4
+    },
+    {
+        "orderId": "4",
+        "customerName": "Sara Galan",
+        "customerAddress": "Carrer de Maria l'Auxiliadora 6",
+        "customerEmail": "sarag2007@gmail.com",
+        "customerPhone": "623589471",
+        "products": [
+            {
+                "product": "Converse Chuck Taylor",
+                "price": 70,
+                "quantity": 2
+            },
+            {
+                "product": "New Balance 530",
+                "price": 110,
+                "quantity": 1
+            }
+        ],
+        "subtotal": 250,
+        "vat": 52.5,
+        "total": 302.5
     }
 ]

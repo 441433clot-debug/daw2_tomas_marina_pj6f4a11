@@ -116,5 +116,14 @@ if ($jsonData === false || file_put_contents($filePath, $jsonData, LOCK_EX) === 
     sendJsonResponse(false, "The order could not be saved.", [], 404);
 }
 
-// Confirm that the order was saved
-sendJsonResponse(true, "Order saved successfully.", [], 200);
+// Confirm that the order was saved and return the calculated values
+sendJsonResponse(
+    true,
+    "Order saved successfully.",
+    [
+        "subtotal" => $subtotal,
+        "vat" => $vat,
+        "total" => $total
+    ],
+    200
+);
